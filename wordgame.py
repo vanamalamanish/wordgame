@@ -23,7 +23,7 @@ while(c=='yes'):
         for i in dictionary[word]:
             if guess in i:   
                 print("\nYou Won")  
-                print("The word is: ", guess) 
+                print("The word is:", guess) 
                 flag=1
                 points+=1
                 break
@@ -31,7 +31,10 @@ while(c=='yes'):
                 turns-=1
                 print("Wrong")  
                 if turns == 0: 
-                    print("You Loose")     
+                    print("You Loose")  
+                    for i in dictionary[word]:
+                        print("The correct answer is",i)
+                        break
                     break
                 print("You have", + turns, 'more guesses')
         if flag==1:
