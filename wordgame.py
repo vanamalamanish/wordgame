@@ -1,36 +1,41 @@
 import random 
+from collections import defaultdict as dd
 name = input("What is your name? ") 
 print("Good Luck ! ", name) 
 print("Guess me who am I??")
-dictionary = {"I am a seasonal fruit":"mango","No one lives without me now a days":"mobile",
-"first program teach in all programming languages":"helloworld",
-"I will form when there is heavy rainfall":"rainbow",
-"I look beautiful but when you touch me you get pain":"rose",
-"I am round but when you lift i will become triangle":"pizza",
-} 
+dictionary=dd(list)
+dictionary["I am a seasonal fruit"].append(["mango","apple"])
+dictionary["No one lives without me now a days"].append(["mobile","phone",'mask','sanitizer']) 
+dictionary["first program teach in all programming languages"].append("helloworld")
+dictionary["I will form when there is heavy rainfall"].append("rainbow")
+dictionary["I look beautiful but when you touch me you get pain"].append("rose")
+dictionary["I am round but when you lift i will become triangle"].append("pizza")
 c='yes'
 while(c=='yes'):
     word = random.choice(list(dictionary.keys())) 
     print(word) 
     turns = 3
     print("You have",turns,"turns")
+    flag=0
     while turns > 0:
-        guess = input("\nGuess me:") 
-        if guess==dictionary[word]:   
-            print("\nYou Won")  
-            print("The word is: ", dictionary[word]) 
-            print("Do you want to play again(Enter Yes or NO)")
-            c=input()
-            break
-        else: 
-            turns-=1
-            print("Wrong")  
-            if turns == 0: 
-                print("You Loose")     
-                print("Do you want to play again(Enter Yes or NO)")
-                c=input()
+        guess = input("\nGuess me:")
+        for i in dictionary[word]:
+            if guess in i:   
+                print("\nYou Won")  
+                print("The word is: ", guess) 
+                flag=1
                 break
-            print("You have", + turns, 'more guesses')
+            else: 
+                turns-=1
+                print("Wrong")  
+                if turns == 0: 
+                    print("You Loose")     
+                    break
+                print("You have", + turns, 'more guesses')
+        if flag==1:
+            break
     del dictionary[word]
+    print("Do you want to play again(Enter Yes or NO)")
+    c=input()
             
         
