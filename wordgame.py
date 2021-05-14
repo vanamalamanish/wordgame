@@ -11,6 +11,7 @@ dictionary["I will form when there is heavy rainfall"].append("rainbow")
 dictionary["I look beautiful but when you touch me you get pain"].append("rose")
 dictionary["I am round but when you lift i will become triangle"].append("pizza")
 c='yes'
+points=0
 while(c=='yes'):
     word = random.choice(list(dictionary.keys())) 
     print(word) 
@@ -24,6 +25,7 @@ while(c=='yes'):
                 print("\nYou Won")  
                 print("The word is: ", guess) 
                 flag=1
+                points+=1
                 break
             else: 
                 turns-=1
@@ -35,6 +37,7 @@ while(c=='yes'):
         if flag==1:
             break
     del dictionary[word]
+    print("you got",points,"points")
     print("Do you want to play again(Enter Yes or NO)")
     c=input()
             
